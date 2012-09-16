@@ -1,0 +1,6 @@
+Animation App for Lightning Talks
+===
+
+This app will be created and destroyed multiple times as I settle on an
+_animation_ app that works well with the lightning talk format.
+
