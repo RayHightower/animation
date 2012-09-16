@@ -35,7 +35,26 @@ class AppDelegate
   end
 
   def cycle_to_next_color
-    @view.backgroundColor = UIColor.redColor
+    @color_index ||= 0
+    @color_index = (@color_index + 1) % 5
+
+    case @color_index
+    when 0
+      @view.backgroundColor = UIColor.redColor
+
+    when 1
+      @view.backgroundColor = UIColor.greenColor
+
+    when 2
+      @view.backgroundColor = UIColor.blueColor
+
+    when 3
+      @view.backgroundColor = UIColor.orangeColor
+
+    when 4
+      @view.backgroundColor = UIColor.yellowColor
+
+    end
   end
 
 end
