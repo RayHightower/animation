@@ -4,7 +4,7 @@ class AppDelegate
     @window.makeKeyAndVisible
 
     # the points we're going to animate to
-    @points = [[0, 0], [50, 0], [0, 50], [50, 50]]
+    @points = [[0, 0], [250, 0], [0, 250], [250, 250]]
     @current_index = 0
 
     # usual method of adding views to our window
@@ -16,4 +16,21 @@ class AppDelegate
       
     true
   end
+
+  def animate_to_next_point
+    @current_index += 1
+
+    # keep current_index in the range [0,3]
+    @current_index = @current_index % @points.count
+
+    UIView.animateWithDuration(2,
+      animations: lambda {
+         @view.frame = [@points[@current_index], [100, 100]]
+      },
+      completion:lambda {|finished|
+        self.animate_to_next_point
+      }
+    )
+  end
+
 end
