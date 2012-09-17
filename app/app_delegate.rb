@@ -23,15 +23,25 @@ class AppDelegate
     # keep current_index in the range [0,3]
     @current_index = @current_index % @points.count
 
-    UIView.animateWithDuration(1,
+    # UIView.animateWithDuration(0.3,
+    #   animations: lambda {
+    #      @view.frame = [@points[@current_index], [100, 100]]
+    #   },
+    #   completion:lambda {|finished|
+    #     self.animate_to_next_point
+    #     self.cycle_to_next_color
+    #   }
+    # )
+
+    UIView.animateWithDuration(2,
+      delay: 1,
+      options: UIViewAnimationOptionCurveLinear,
       animations: lambda {
          @view.frame = [@points[@current_index], [100, 100]]
-      },
-      completion:lambda {|finished|
+      }, completion:lambda {|finished|
         self.animate_to_next_point
-        self.cycle_to_next_color
-      }
-    )
+      })
+
   end
 
   def cycle_to_next_color
